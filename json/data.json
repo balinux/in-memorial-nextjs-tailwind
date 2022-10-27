@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "supiati",
+      "date": "25-10-2022",
+      "gender": "female",
+      "image_url": "https://syaikh-ali-jaber.yhotie.com/assets/syaik-photo-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "syaikh ali jaber",
+      "date": "25-10-2022",
+      "gender": "male",
+      "image_url": "https://syaikh-ali-jaber.yhotie.com/assets/syaik-photo-1.jpg"
+    }
+  ]
+}
