@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -57,9 +58,18 @@ export default function Home() {
       <main className=" bg-white h-screen w-screen flex flex-col md:flex-row">
         {/* ucapan */}
         <div className="bg-white flex flex-1 flex-col justify-center items-start mx-5 mt-5 md:ml-32 md:mr-32 order-2 md:order-1">
-          <figure className="">
+          {/* <figure className="">
             <img src="/tahlil.svg" alt="tahlil" className="" />
-          </figure>
+          </figure> */}
+
+          <Image
+                src="/tahlil.svg"
+                className=" md:opacity-70 opacity-20"
+                width={500}
+                height={500}
+                alt="no image"
+
+              />
           <p className="mt-10 md:mt-5 self-center md:self-start text-lg">
             turut beduka cita atas wafatnya
           </p>
@@ -110,23 +120,37 @@ export default function Home() {
         <div className="flex flex-1 justify-center items-center order-1 md:order-2">
           <div className="relative w-full md:h-screen h-80 overflow-hidden ">
             <div className="absolute">
-              <figure>
+              <Image
+                src="/background-2.jpg"
+                className=" md:opacity-70 opacity-20"
+                width={500}
+                height={500}
+                alt="no image"
+              />
+              {/* <figure>
                 <img
                   src="/background-2.jpg"
                   className=" md:opacity-70 opacity-20"
                 />
-              </figure>
+              </figure> */}
             </div>
 
             <div className="absolute -top-20 md:top-0 md:bottom-0">
-              <figure>
+              {/* <figure>
                 <img src="/bunda.png" className="drop-shadow-5xl w-screen" />
-              </figure>
+              </figure> */}
+              <Image
+                src="/bunda.png"
+                className="drop-shadow-5xl w-screen"
+                width={500}
+                height={500}
+                alt="no image"
+              />
             </div>
           </div>
         </div>
       </main>
-      <script src="/js/audio.js"></script>
+      <script defer src="/js/audio.js"></script>
 
       {/* <footer className={styles.footer}>
         <a
