@@ -11,7 +11,7 @@ export default function MemoryIndex({response}) {
     const { params } = context;
 
     // const { id } = params;
-    const response = await fetch("http://localhost:3000/api/passed-away");
+    const response = await fetch("https://in-memorial-nextjs-tailwind-mndcbzykb-balinuxninja.vercel.app/api/passed-away");
   
     const data = await response.json();
     // console.log(data);
