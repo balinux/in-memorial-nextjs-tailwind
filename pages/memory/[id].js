@@ -72,7 +72,12 @@ export default function MemoryDetailById({ response }) {
       <main className=" bg-white h-screen w-screen flex flex-col md:flex-row">
         {/* ucapan */}
         <div className="bg-white flex flex-1 flex-col justify-center items-start mx-5 mt-5 md:ml-32 md:mr-32 order-2 md:order-1">
-            <Image src="/tahlil.svg" alt="tahlil" width={500} height={500} />
+          <Image
+            src="/tahlil.svg"
+            alt="tahlil"
+            width={500}
+            height={500}
+          />
           {/* <figure className="">
             <img src="/tahlil.svg" alt="tahlil" className="" />
           </figure> */}
@@ -128,12 +133,13 @@ export default function MemoryDetailById({ response }) {
         <div className="flex flex-1 justify-center items-center order-1 md:order-2">
           <div className="relative w-full md:h-screen h-80 overflow-hidden ">
             <div className="absolute">
-                <Image
-                  src="/background-2.jpg"
-                  className=" md:opacity-70 opacity-20"
-                  width={500}
-                  height={500}
-                />
+              <Image
+                src="/background-2.jpg"
+                className=" md:opacity-70 opacity-20"
+                width={500}
+                height={500}
+                alt="no image"
+              />
               {/* <figure>
                 <img
                   src="/background-2.jpg"
@@ -151,6 +157,7 @@ export default function MemoryDetailById({ response }) {
                 className="drop-shadow-5xl w-screen"
                 width={500}
                 height={500}
+                alt="no image"
               />
             </div>
           </div>
