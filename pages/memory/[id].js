@@ -156,7 +156,7 @@ export default function MemoryDetailById({ response }) {
           </div>
         </div>
       </main>
-      <script src="/js/audio.js"></script>
+      <script defer src="/js/audio.js"></script>
 
       {/* <footer className={styles.footer}>
       <a
