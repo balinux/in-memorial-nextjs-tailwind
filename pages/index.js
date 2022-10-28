@@ -67,6 +67,8 @@ export default function Home() {
                 className=" md:opacity-70 opacity-20"
                 width={500}
                 height={500}
+                alt="no image"
+
               />
           <p className="mt-10 md:mt-5 self-center md:self-start text-lg">
             turut beduka cita atas wafatnya
@@ -123,6 +125,7 @@ export default function Home() {
                 className=" md:opacity-70 opacity-20"
                 width={500}
                 height={500}
+                alt="no image"
               />
               {/* <figure>
                 <img
@@ -141,6 +144,7 @@ export default function Home() {
                 className="drop-shadow-5xl w-screen"
                 width={500}
                 height={500}
+                alt="no image"
               />
             </div>
           </div>
