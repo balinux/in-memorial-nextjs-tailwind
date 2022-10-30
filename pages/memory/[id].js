@@ -132,12 +132,12 @@ export default function MemoryDetailById({ response }) {
         {/* foto */}
         <div className="flex flex-1 justify-center items-center order-1 md:order-2">
           <div className="relative w-full md:h-screen h-80 overflow-hidden ">
-            <div className="absolute">
+            <div className="absolute right-0">
               <Image
                 src="/background-2.jpg"
                 className=" md:opacity-70 opacity-20"
                 width={500}
-                height={500}
+                height={300}
                 alt="no image"
               />
               {/* <figure>
