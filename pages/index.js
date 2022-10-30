@@ -62,7 +62,7 @@ export default function Home({ response }) {
     
           {/* looping data */}
           {response.data.map((item) => (
-            <div className="my-2 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+            <div key={item.id} className="my-2 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
               <article className="overflow-hidden rounded-lg shadow-lg">
                 <Link href={`/memory/${item.id}`}>
                   {/* <img
