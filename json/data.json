@@ -5,13 +5,15 @@
       "name": "supiati",
       "date": "25-10-2022",
       "gender": "female",
-      "image_url": "https://syaikh-ali-jaber.yhotie.com/assets/syaik-photo-1.jpg"
+      "author": "yhotie",
+      "image_url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkDlQ65NCTDVUf1lRNMorpnq4GbwAk79iAhDCc70zA0ViVhJi-3Vmc2HAJ8lOrUfY2izrmPhIH1MtVr0D9mWUdDzfImFaqE_MLI50q_GW2mlgtFebqhxFvt-O2S_UMcVTSIPG6Aw9iCwl9awrLGxYA6NSIjq9FT69ctlohNr6yocdwHK7JEpTMpPNy0Q/s16000/bunda.webp"
     },
     {
       "id": 2,
       "name": "syaikh ali jaber",
       "date": "25-10-2022",
       "gender": "male",
+      "author": "yhotie",
       "image_url": "https://syaikh-ali-jaber.yhotie.com/assets/syaik-photo-1.jpg"
     }
   ]
