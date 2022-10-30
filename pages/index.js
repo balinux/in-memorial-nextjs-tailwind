@@ -186,7 +186,7 @@ export async function getServerSideProps() {
   // const response = await fetch(`http://localhost:3000/api/passed-away/`);
 
   // prod
-  const response = await fetch(`https://in-memorial-nextjs-tailwind-mndcbzykb-balinuxninja.vercel.app/api/passed-away`);
+  const response = await fetch(`https://in-memorial-nextjs-tailwind.vercel.app/api/passed-away`);
 
   const data = await response.json();
   // console.log(data);
