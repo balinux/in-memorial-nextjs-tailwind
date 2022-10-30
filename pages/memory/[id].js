@@ -153,7 +153,8 @@ export default function MemoryDetailById({ response }) {
                 <img src="/bunda.png" className="drop-shadow-5xl w-screen" />
               </figure> */}
               <Image
-                src="/bunda.png"
+                // src="/bunda.png"
+                src={image_url}
                 className="drop-shadow-5xl w-screen"
                 width={500}
                 height={500}
