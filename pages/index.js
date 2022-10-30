@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home({ response }) {
-  console.log(response);
   return (
     <div className=" bg-white">
       <Head>
@@ -189,7 +188,6 @@ export async function getServerSideProps() {
   const response = await fetch(`https://in-memorial-nextjs-tailwind.vercel.app/api/passed-away`);
 
   const data = await response.json();
-  // console.log(data);
 
   return {
     props: {

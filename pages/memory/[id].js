@@ -4,6 +4,7 @@ import Image from "next/image";
 export default function MemoryDetailById({ response }) {
   // console.log("data: ", response);
   const { id, name, date, gender, image_url } = response;
+  // console.log(image_url);
 
   return (
     // <div>
@@ -185,15 +186,15 @@ export default function MemoryDetailById({ response }) {
 export async function getServerSideProps(context) {
   const { params } = context;
   const { id } = params;
-  // console.log(id);
+  // console.log("id: ", id);
   // dev
   // const response = await fetch(`http://localhost:3000/api/passed-away/${id}`);
   
   // prod
-  const response = await fetch(`https://in-memorial-nextjs-tailwind-mndcbzykb-balinuxninja.vercel.app/api/passed-away/${id}`);
+  const response = await fetch(`https://in-memorial-nextjs-tailwind.vercel.app/api/passed-away/${id}`);
 
   const data = await response.json();
-  // console.log(data);
+  // console.log("data: ", data);
 
   return {
     props: {
