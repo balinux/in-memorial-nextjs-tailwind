@@ -33,7 +33,9 @@ export default function MemoryDetailById({ response }) {
 
         <meta
           property="twitter:title"
-          content={name == undefined ? name : +name}
+          content={
+            name == undefined ? name : " Turut berduka atas wafatnya " + name
+          }
         />
         <meta
           property="twitter:description"
