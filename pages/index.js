@@ -39,7 +39,7 @@ export default function Home({ response }) {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://syaikh-ali-jaber.yhotie.com/"
+          content="https://in-memorial.yhotie.com"
         />
         <meta
           property="og:title"

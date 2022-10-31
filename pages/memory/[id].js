@@ -28,12 +28,14 @@ export default function MemoryDetailById({ response }) {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content="https://syaikh-ali-jaber.yhotie.com"
+          content="https://in-memorial.yhotie.com"
         />
 
         <meta
           property="twitter:title"
-          content={name == undefined ? name : +name}
+          content={
+            name == undefined ? name : " Turut berduka atas wafatnya " + name
+          }
         />
         <meta
           property="twitter:description"
@@ -51,7 +53,7 @@ export default function MemoryDetailById({ response }) {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://syaikh-ali-jaber.yhotie.com/"
+          content="hthttps://in-memorial.yhotie.com"
         />
         <meta
           property="og:title"
