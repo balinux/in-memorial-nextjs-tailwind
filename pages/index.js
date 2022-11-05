@@ -74,14 +74,14 @@ export default function Home({ response }) {
         {/* CTA */}
         <section
           id="beranda"
-          className=" flex flex-col md:flex-row justify-start items-center content-center px-4 md:px-20 md:h-[80vh] h-[60vh] "
+          className=" flex flex-col md:flex-row justify-start items-center content-center px-4 md:px-20 md:h-[80vh] "
         >
           <div className="flex flex-col w-full md:h-full md:w-1/2 md:order-1 order-2 justify-center mt-5 md:mt-0">
             <p className=" font-bold text-3xl">Simpan Kenangan Mereka</p>
             <p className="mt-2 mb-10">
               Jaga kenangan terbaik bersama orang tercintamu bersama kami
             </p>
-            <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold mb-10 md:mb-10">
+            <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10">
               Buat Kenangan
             </button>
           </div>
@@ -291,7 +291,7 @@ export default function Home({ response }) {
         {/* footer */}
         <footer className="w-screen h-20 bg-[#587462]/5 flex md:flex-row flex-col px-20 items-center md:justify-between justify-center">
           <p className=" font-bold text-xl text-[#587462]"> In-Memorial.</p>
-          <p className=" text-[#587462]"> Copyright 2022, created by yhotie</p>
+          <p className=" text-[#587462] text-center"> Copyright 2022, created by yhotie</p>
         </footer>
         {/* footer */}
       </main>
