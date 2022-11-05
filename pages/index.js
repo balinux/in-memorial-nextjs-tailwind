@@ -85,8 +85,7 @@ export default function Home({ response }) {
         {/* CTA */}
 
         {/* memory */}
-        {/* <section className="flex flex-col md:flex-row justify-between items-center px-0 md:px-20 h-[80vh] bg-[#587462] opacity-5"> */}
-        <section className=" h-screen bg-[#587462]/5 flex flex-col items-center mt-14 md:mt-0 px-4 md:px-0">
+        <section className=" md:h-screen bg-[#587462]/5 flex flex-col items-center mt-14 md:mt-0 px-4 pb-10 md:pb-0 md:px-0">
           <div className=" w-1/6 h-1 bg-[#587462] mt-10 mb-3"></div>
           <p className="text-2xl font-semibold">Kenangan Bersama </p>
           <p className="font-semibold text-[#587462] self-end md:mr-20 mt-5">
@@ -216,8 +215,71 @@ export default function Home({ response }) {
             </div>
           </div>
         </section>
-
         {/* memory */}
+
+        {/* contact */}
+        <section className=" flex flex-col items-center mt-14 md:mt-0 px-4 md:px-0">
+          <div className=" w-1/6 h-1 bg-[#587462] mt-10 mb-3"></div>
+          <p className="text-2xl font-semibold mb-10">Kontak Saya </p>
+
+          <div className="flex flex-col md:flex-row justify-between items-center px-0 md:px-20 w-full h-full md:mb-10 mb-5">
+            <div className="w-full md:mr-5 mb-5 md:mb-0">
+              <label className="block">
+                <span className="text-gray-700">Nama</span>
+                <input
+                  type="text"
+                  className="mt-1 w-full rounded-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="masukkan nama"
+                />
+              </label>
+            </div>
+
+            <div className="w-full">
+              <label className="block">
+                <span className="text-gray-700">Nomor HP</span>
+                <input
+                  type="text"
+                  className="mt-1 w-full rounded-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="masukkan nomor HP"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div className="w-full md:mx-20 md:px-20 mb-10">
+            <label
+              htmlFor="about"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Pesan
+            </label>
+            <div className="mt-1 ">
+              <textarea
+                id="about"
+                name="about"
+                rows={5}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                placeholder="masukkan pesan anda"
+                defaultValue={""}
+              />
+            </div>
+            <p className="mt-2 text-sm text-gray-500">
+              Tulis secara singkat dan jelas pesan anda
+            </p>
+          </div>
+
+          <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold mb-10 md:mb-10 self-end md:mr-20">
+            Kirim Pesan
+          </button>
+        </section>
+        {/* contact */}
+
+        {/* footer */}
+        <footer className="w-screen h-20 bg-[#587462]/5 flex md:flex-row flex-col px-20 items-center md:justify-between justify-center">
+          <p className=" font-bold text-xl text-[#587462]"> In-Memorial.</p>
+          <p className=" text-[#587462]"> Copyright 2022, created by yhotie</p>
+        </footer>
+        {/* footer */}
       </main>
     </div>
   );
