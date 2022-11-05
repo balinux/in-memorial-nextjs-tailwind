@@ -58,16 +58,24 @@ export default function Home({ response }) {
         <nav className=" flex flex-row h-20 w-screen justify-between items-center px-5 md:px-20">
           <p className=" font-bold text-3xl text-[#587462]"> In-Memorial.</p>
           <div className="md:flex flex-row hidden">
-            <p className="mr-5">Home</p>
-            <p className="mr-5">About Me</p>
-            <p className="mr-5">Hobby</p>
-            <p className="mr-5">Home</p>
+            <a href="#beranda">
+              <p className="mr-5">Beranda</p>
+            </a>
+            <a href="#kenangan">
+              <p className="mr-5">Kenangan</p>
+            </a>
+            <a href="#kontak">
+              <p className="mr-5">Kontak</p>
+            </a>
           </div>
         </nav>
         {/* navigasi */}
 
         {/* CTA */}
-        <section className=" flex flex-col md:flex-row justify-start items-center content-center px-4 md:px-20 md:h-[80vh] h-[60vh] ">
+        <section
+          id="beranda"
+          className=" flex flex-col md:flex-row justify-start items-center content-center px-4 md:px-20 md:h-[80vh] h-[60vh] "
+        >
           <div className="flex flex-col w-full md:h-full md:w-1/2 md:order-1 order-2 justify-center mt-5 md:mt-0">
             <p className=" font-bold text-3xl">Simpan Kenangan Mereka</p>
             <p className="mt-2 mb-10">
@@ -85,7 +93,10 @@ export default function Home({ response }) {
         {/* CTA */}
 
         {/* memory */}
-        <section className=" md:h-screen bg-[#587462]/5 flex flex-col items-center mt-14 md:mt-0 px-4 pb-10 md:pb-0 md:px-0">
+        <section
+          id="kenangan"
+          className=" md:h-screen bg-[#587462]/5 flex flex-col items-center mt-14 md:mt-0 px-4 pb-10 md:pb-0 md:px-0"
+        >
           <div className=" w-1/6 h-1 bg-[#587462] mt-10 mb-3"></div>
           <p className="text-2xl font-semibold">Kenangan Bersama </p>
           <p className="font-semibold text-[#587462] self-end md:mr-20 mt-5">
@@ -218,7 +229,10 @@ export default function Home({ response }) {
         {/* memory */}
 
         {/* contact */}
-        <section className=" flex flex-col items-center mt-14 md:mt-0 px-4 md:px-0">
+        <section
+          id="kontak"
+          className=" flex flex-col items-center mt-14 md:mt-0 px-4 md:px-0"
+        >
           <div className=" w-1/6 h-1 bg-[#587462] mt-10 mb-3"></div>
           <p className="text-2xl font-semibold mb-10">Kontak Saya </p>
 
