@@ -20,23 +20,23 @@ export default function Nav() {
     // )
 
     return (
-        <nav className=" flex flex-row h-20 w-screen justify-between items-center px-5 md:px-20">
+        <nav className=" flex flex-row h-20  justify-between items-center px-5 md:px-20">
             <p className=" font-bold text-3xl text-[#587462]"> In-Memorial.</p>
             <div className="md:flex flex-row hidden">
                 <a href="#beranda">
-                    <p className="mr-5">Beranda</p>
+                    <p className="mr-5 ">Beranda</p>
                 </a>
                 <a href="#kenangan">
-                    <p className="mr-5">Kenangan</p>
+                    <p className="mr-5 ">Kenangan</p>
                 </a>
                 <a href="#kontak">
-                    <p className="mr-5">Kontak</p>
+                    <p className="mr-5 ">Kontak</p>
                 </a>
-                {session && <Image src={session.user.image} width={50} height={50} alt="no image" className='w-7 h-7 mr-2' />}
-                {session && <p className='mr-5 font-bold'>{session.user.name}</p>}
+                {session && <Image src={session.user.image} width={50} height={50} alt="" className="w-7 h-7 mr-2 rounded-full" />}
+                {session && <p className='mr-5  font-bold'>{session.user.name}</p>}
 
-                {session && <a href="#" onClick={handleSignout}><Image src="/logout.png" width={50} height={50} alt="no image" className='w-7 h-7' /></a>}
-                {!session && <a href="#" onClick={handleSignin}>SIGN IN</a>}
+                {session && <a href="#" onClick={handleSignout}><Image src="/logout.png" width={50} height={50} alt="no image" className='w-7 h-7 ' /></a>}
+                {!session && <a href="#" onClick={handleSignin} className=""> Sign In</a>}
             </div>
         </nav>
     )
