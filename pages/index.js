@@ -5,7 +5,7 @@ import Nav from "../components/nav";
 
 export default function Home({ response }) {
   return (
-    <div className=" bg-white">
+    <div className="container mx-auto">
       <Head>
         <title>In Memorial</title>
 
@@ -54,22 +54,22 @@ export default function Home({ response }) {
         />
       </Head>
 
-      <main className="mx-auto px-0 md:px-0">
+      <main className="px-0 md:px-0 ">
         {/* navigasi */}
           <Nav/>
         {/* navigasi */}
 
-        {/* CTA */}
+        {/* HERO */}
         <section
           id="beranda"
-          className=" flex flex-col md:flex-row justify-start items-center content-center px-4 md:px-20 md:h-[80vh] "
+          className=" flex flex-col md:flex-row justify-start items-center content-center px-4 md:px-20 md:h-[70vh] "
         >
           <div className="flex flex-col w-full md:h-full md:w-1/2 md:order-1 order-2 justify-center mt-5 md:mt-0">
-            <p className=" font-bold text-3xl">Simpan Kenangan Mereka</p>
-            <p className="mt-2 mb-10">
+            <p className=" font-bold md:text-3xl text-2xl text-center md:text-start">Simpan Kenangan Mereka</p>
+            <p className="mt-2 mb-10 text-center md:text-start">
               Jaga kenangan terbaik bersama orang tercintamu bersama kami
             </p>
-            <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10">
+            <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start">
               Buat Kenangan
             </button>
           </div>
@@ -78,21 +78,21 @@ export default function Home({ response }) {
             <Image src="/cta.png" width={400} height={100} alt="no image" />
           </div>
         </section>
-        {/* CTA */}
+        {/* HERO */}
 
         {/* memory */}
         <section
           id="kenangan"
-          className=" md:h-screen bg-[#587462]/5 flex flex-col items-center mt-14 md:mt-0 px-4 pb-10 md:pb-0 md:px-0"
+          className=" bg-[#587462]/5 flex flex-col items-center mt-14 md:mt-0 px-4 pb-10 md:pb-0 md:px-0"
         >
-          <div className=" w-1/6 h-1 bg-[#587462] mt-10 mb-3"></div>
-          <p className="text-2xl font-semibold">Kenangan Bersama </p>
-          <p className="font-semibold text-[#587462] self-end md:mr-20 mt-5">
+          <div className=" w-1/6 h-1 bg-[#587462] mt-10 md:mt-20 mb-3"></div>
+          <p className="text-2xl font-semibold md:mb-20">Kenangan Bersama </p>
+          <p className="font-semibold text-[#587462] self-end md:mr-20 mt-5 ">
             Lihat lainnya
           </p>
 
-          <div className="flex flex-col md:flex-row justify-between items-center px-0 md:px-20 w-full h-full">
-            <div className="flex flex-wrap -mx-1 lg:-mx-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-0 md:px-20 w-full h-full md:mb-20">
+            <div className="flex flex-wrap -mx-1 lg:mx-4">
               {/* looping data */}
               {response.data.map((item) => (
                 <div
@@ -219,10 +219,10 @@ export default function Home({ response }) {
         {/* contact */}
         <section
           id="kontak"
-          className=" flex flex-col items-center mt-14 md:mt-0 px-4 md:px-0"
+          className=" flex flex-col items-center mt-14 md:mt-20 md:mb-20 px-4 md:px-0"
         >
           <div className=" w-1/6 h-1 bg-[#587462] mt-10 mb-3"></div>
-          <p className="text-2xl font-semibold mb-10">Kontak Saya </p>
+          <p className="text-2xl font-semibold mb-10 md:mb-20">Kontak Saya </p>
 
           <div className="flex flex-col md:flex-row justify-between items-center px-0 md:px-20 w-full h-full md:mb-10 mb-5">
             <div className="w-full md:mr-5 mb-5 md:mb-0">
@@ -277,7 +277,7 @@ export default function Home({ response }) {
         {/* contact */}
 
         {/* footer */}
-        <footer className="w-screen h-20 bg-[#587462]/5 flex md:flex-row flex-col px-20 items-center md:justify-between justify-center">
+        <footer className=" h-20 bg-[#587462]/5 flex md:flex-row flex-col px-20 items-center md:justify-between justify-center">
           <p className=" font-bold text-xl text-[#587462]"> In-Memorial.</p>
           <p className=" text-[#587462] text-center"> Copyright 2022, created by yhotie</p>
         </footer>
