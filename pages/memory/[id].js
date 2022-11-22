@@ -135,7 +135,7 @@ export default function MemoryDetailById({ response }) {
         {/* foto */}
         <div className="flex flex-1 justify-center items-center order-1 md:order-2">
           <div className="relative w-full md:h-screen h-80 overflow-hidden ">
-            <div className="absolute right-0">
+            {/* <div className="absolute right-0">
               <Image
                 src="/background-2.jpg"
                 className=" md:opacity-70 opacity-20"
@@ -143,26 +143,22 @@ export default function MemoryDetailById({ response }) {
                 height={300}
                 alt="no image"
               />
-              {/* <figure>
-                <img
-                  src="/background-2.jpg"
-                  className=" md:opacity-70 opacity-20"
-                />
-              </figure> */}
-            </div>
+            </div> */}
 
-            <div className="absolute -top-20 md:top-0 md:bottom-0">
+            <div className="absolute -top-20 md:top-0 md:bottom-0 md:right-20 ">
               {/* <figure>
                 <img src="/bunda.png" className="drop-shadow-5xl w-screen" />
               </figure> */}
-              <Image
-                // src="/bunda.png"
-                src={image_url}
-                className="drop-shadow-5xl w-screen"
-                width={500}
-                height={500}
-                alt="no image"
-              />
+              <div className=" flex flex-col  md:h-full md:w-full overflow-hidden justify-center">
+                <Image
+                  // src="/bunda.png"
+                  src={image_url}
+                  className="drop-shadow-5xl w-screen"
+                  width={500}
+                  height={500}
+                  alt="no image"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -191,7 +187,7 @@ export async function getServerSideProps(context) {
   // console.log("id: ", id);
   // dev
   // const response = await fetch(`http://localhost:3000/api/passed-away/${id}`);
-  
+
   // prod
   const response = await fetch(`https://in-memorial-nextjs-tailwind.vercel.app/api/passed-away/${id}`);
 
