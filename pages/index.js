@@ -101,6 +101,7 @@ export default function Home({ response }) {
                 >
                   <article className="overflow-hidden rounded-lg shadow-lg bg-white">
                     <Link href={`/memory/${item.id}`}>
+                      
                       {/* <img
                     alt="Placeholder"
                     className="block h-auto w-full"
