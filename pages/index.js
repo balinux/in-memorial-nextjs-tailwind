@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import Nav from "../components/nav";
 
 export default function Home({ response }) {
   return (
@@ -55,20 +56,7 @@ export default function Home({ response }) {
 
       <main className="mx-auto px-0 md:px-0">
         {/* navigasi */}
-        <nav className=" flex flex-row h-20 w-screen justify-between items-center px-5 md:px-20">
-          <p className=" font-bold text-3xl text-[#587462]"> In-Memorial.</p>
-          <div className="md:flex flex-row hidden">
-            <a href="#beranda">
-              <p className="mr-5">Beranda</p>
-            </a>
-            <a href="#kenangan">
-              <p className="mr-5">Kenangan</p>
-            </a>
-            <a href="#kontak">
-              <p className="mr-5">Kontak</p>
-            </a>
-          </div>
-        </nav>
+          <Nav/>
         {/* navigasi */}
 
         {/* CTA */}
