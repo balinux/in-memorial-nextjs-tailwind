@@ -8,23 +8,26 @@ export default function MemoryDetailById({ response }) {
   // console.log("properties: ", properties);
 
   const { id, name, date, gender, image_url } = properties;
-  console.log("properties: ", gender);
+  // console.log("properties: ", name);
 
   return (
     // <div>
     //   <p>{response.name}</p>
     // </div>
     <div className=" bg-white">
-      {/* <Head>
-        <title>{name}</title>
+      <Head>
+        <title><NotionTitle params={name} textOnly={false}/></title>
+        {/* <title>NotionTitle(name)</title> */}
 
         <meta
           name="title"
-          content={name == undefined ? name : "memory " + name}
+          content={NotionTitle({params:name, textOnly:true }) == undefined ? "title" : "memory " + NotionTitle({params:name, textOnly:true })}
         />
         <meta
           name="description"
-          content={name == undefined ? name : "memory " + name}
+          // content={name == undefined ? name : "memory " + name}
+          content={NotionTitle({params:name, textOnly:true }) == undefined ? "title" : "Turut berduka atas wafatnya " + NotionTitle({params:name, textOnly:true })}
+
         />
         <link rel="icon" href="/favicon.ico" />
 
@@ -33,16 +36,20 @@ export default function MemoryDetailById({ response }) {
 
         <meta
           property="twitter:title"
-          content={
-            name == undefined ? name : " Turut berduka atas wafatnya " + name
-          }
+          // content={
+          //   name == undefined ? name : " Turut berduka atas wafatnya " + name
+        // }
+          content={NotionTitle({params:name, textOnly:true }) == undefined ? "tw title" : "memory " + NotionTitle({params:name, textOnly:true })}
+            
         />
         <meta
           property="twitter:description"
           // content="Turut berduka atas wafatnya syaikh ali jaber (Syaikh Ali Saleh Muhammed Ali Jaber)"
-          content={
-            name == undefined ? name : " Turut berduka atas wafatnya " + name
-          }
+          // content={
+          //   name == undefined ? name : " Turut berduka atas wafatnya " + name
+          // }
+          content={NotionTitle({params:name, textOnly:true }) == undefined ? "tw desc" : "Turut berduka atas wafatnya " + NotionTitle({params:name, textOnly:true })}
+
         />
         <meta
           property="twitter:image"
@@ -53,20 +60,25 @@ export default function MemoryDetailById({ response }) {
         <meta property="og:url" content="hthttps://in-memorial.yhotie.com" />
         <meta
           property="og:title"
-          content={name == undefined ? name : "memory " + name}
+          // content={name == undefined ? name : "memory " + name}
+          content={NotionTitle({params:name, textOnly:true }) == undefined ? "og title" : "memory " + NotionTitle({params:name, textOnly:true })}
+
         />
         <meta
           property="og:description"
-          content={
-            name == undefined ? name : " Turut berduka atas wafatnya " + name
-          }
+          // content={
+          //   name == undefined ? name : " Turut berduka atas wafatnya " + name
+          // }
+
+          content={NotionTitle({params:name, textOnly:true }) == undefined ? "og desc" : "Turut berduka atas wafatnya " + NotionTitle({params:name, textOnly:true })}
+
         />
 
         <meta
           property="og:image"
           content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
         />
-      </Head> */}
+      </Head>
 
       <main className=" bg-white h-screen w-screen flex flex-col md:flex-row">
         {/* ucapan */}
@@ -80,10 +92,10 @@ export default function MemoryDetailById({ response }) {
           </p>
           <p className="mt-5 font-bold text-3xl self-center md:self-start ">
             {gender.select.name == "male" ? "Alm" : "Almh"}.{" "}
-            <NotionTitle params={name} />
+            <NotionTitle params={name} textOnly={false} />
           </p>
           <p className="self-center md:self-start">
-            (<NotionTitle params={name} />)
+            (<NotionTitle params={name} textOnly={false} />)
           </p>
           <p className="mt-10 md:mt-5 font-bold text-xl self-center md:self-start">
             {gender.select.name == "male"
@@ -216,7 +228,7 @@ export async function getServerSideProps(context) {
   });
 
   const data = await response.json();
-  console.log("data: ", data);
+  // console.log("data: ", data);
 
   return {
     props: {
