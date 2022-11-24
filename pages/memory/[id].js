@@ -8,7 +8,7 @@ export default function MemoryDetailById({ response }) {
   // console.log("properties: ", properties);
 
   const { id, name, date, gender, image_url } = properties;
-  // console.log("properties: ", name);
+  // console.log("properties: ", image_url);
 
   return (
     // <div>
@@ -16,8 +16,9 @@ export default function MemoryDetailById({ response }) {
     // </div>
     <div className=" bg-white">
       <Head>
-        <title><NotionTitle params={name} textOnly={false}/></title>
-        {/* <title>NotionTitle(name)</title> */}
+        {/* <title><NotionTitle params={name} textOnly={false}/></title> */}
+        {/* <title>{<NotionTitle params={name} textOnly={false}/>}</title> */}
+        <title>{NotionTitle({params:name, textOnly:true })}</title>
 
         <meta
           name="title"
@@ -53,7 +54,9 @@ export default function MemoryDetailById({ response }) {
         />
         <meta
           property="twitter:image"
-          content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
+          // content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
+          content={image_url.url == undefined ? "https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png" : "memory " + image_url.url}
+
         />
 
         <meta property="og:type" content="website" />
@@ -76,7 +79,9 @@ export default function MemoryDetailById({ response }) {
 
         <meta
           property="og:image"
-          content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
+          content={image_url.url == undefined ? "https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png" : "memory " + image_url.url}
+
+          // content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
         />
       </Head>
 
@@ -151,11 +156,11 @@ export default function MemoryDetailById({ response }) {
               />
             </div> */}
 
-            <div className="absolute top-0 bottom-0 md:top-0 md:bottom-0 md:right-20 ">
+            <div className="absolute top-0 bottom-0 md:top-0 right-0 left-0 md:bottom-0 md:right-20 ">
               {/* <figure>
                 <img src="/bunda.png" className="drop-shadow-5xl w-screen" />
               </figure> */}
-              <div className=" flex flex-col  md:h-full md:w-full overflow-hidden justify-center ">
+              <div className=" flex flex-col md:h-full md:w-full h-full overflow-hidden justify-center  ">
                 {/* <Image
                   // src="/bunda.png"
                   src={image_url}
@@ -167,7 +172,7 @@ export default function MemoryDetailById({ response }) {
 
                 <NotionImageCard
                   image_url={image_url}
-                  className="drop-shadow-5xl md:w-screen w-1/2 md:h-2/3 h-1/2 object-cover rounded-full self-center"
+                  className="drop-shadow-5xl md:w-screen w-1/2 md:h-2/3 h-2/3 object-cover rounded-full self-center"
                   width={500}
                   height={500}
                   alt="no image"
