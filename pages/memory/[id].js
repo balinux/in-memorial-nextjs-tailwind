@@ -216,8 +216,8 @@ export async function getServerSideProps(context) {
   // api from notion
   const page_id = id;
   const url = `https://api.notion.com/v1/pages/${page_id}`;
-  const token = "Bearer secret_yupfQ86d4UVBuTAcOG099gAE6SI0gsAgXGNuxqXnbHa";
-  const notion_version = "2022-02-22";
+  const token = `Bearer ${process.env.NOTION_TOKEN}`;
+  const notion_version = process.env.NOTION_VERSION;
 
   // header
   const headers = {
