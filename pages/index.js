@@ -190,7 +190,7 @@ export default function Home({ response }) {
                           href="#"
                         >
                           {/* {item.name} */}
-                          <NotionTitle params={item.properties.name} />
+                          <NotionTitle params={item.properties.name} textOnly={false} />
                         </a>
                       </h1>
                       <p className=" text-gray-500 text-sm">
