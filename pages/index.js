@@ -365,10 +365,10 @@ export async function getServerSideProps() {
   // );
 
   // api from notion
-  const database_id = "15696beb28934809aa4b899a0c82938d";
+  const database_id = process.env.NOTION_DATABASE_ID;
   const url = `https://api.notion.com/v1/databases/${database_id}/query`;
-  const token = "Bearer secret_yupfQ86d4UVBuTAcOG099gAE6SI0gsAgXGNuxqXnbHa";
-  const notion_version = "2022-02-22";
+  const token = `Bearer ${process.env.NOTION_TOKEN}`;
+  const notion_version = process.env.NOTION_VERSION;
 
   var body = {
     filter: {
