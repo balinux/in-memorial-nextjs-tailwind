@@ -1,17 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
+import NotionImageCard from "../../components/notion-image";
+import NotionTitle from "../../components/notion-title";
 
 export default function MemoryDetailById({ response }) {
-  // console.log("data: ", response);
-  const { id, name, date, gender, image_url } = response;
-  // console.log(image_url);
+  const { properties } = response;
+  // console.log("properties: ", properties);
+
+  const { id, name, date, gender, image_url } = properties;
+  console.log("properties: ", gender);
 
   return (
     // <div>
     //   <p>{response.name}</p>
     // </div>
     <div className=" bg-white">
-      <Head>
+      {/* <Head>
         <title>{name}</title>
 
         <meta
@@ -24,12 +28,8 @@ export default function MemoryDetailById({ response }) {
         />
         <link rel="icon" href="/favicon.ico" />
 
-        {/* twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://in-memorial.yhotie.com"
-        />
+        <meta property="twitter:url" content="https://in-memorial.yhotie.com" />
 
         <meta
           property="twitter:title"
@@ -49,12 +49,8 @@ export default function MemoryDetailById({ response }) {
           content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
         />
 
-        {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="hthttps://in-memorial.yhotie.com"
-        />
+        <meta property="og:url" content="hthttps://in-memorial.yhotie.com" />
         <meta
           property="og:title"
           content={name == undefined ? name : "memory " + name}
@@ -70,17 +66,12 @@ export default function MemoryDetailById({ response }) {
           property="og:image"
           content="https://1.bp.blogspot.com/-hQra7wHJcec/YAJzUxwn2HI/AAAAAAAAEC8/8DcysIQpk54rQIV8begIPN3JcVIgcBOfwCLcBGAsYHQ/s1017/syaikh-ali-jaber.png"
         />
-      </Head>
+      </Head> */}
 
       <main className=" bg-white h-screen w-screen flex flex-col md:flex-row">
         {/* ucapan */}
         <div className="bg-white flex flex-1 flex-col justify-center items-start mx-5 mt-5 md:ml-32 md:mr-32 order-2 md:order-1">
-          <Image
-            src="/tahlil.svg"
-            alt="tahlil"
-            width={500}
-            height={500}
-          />
+          <Image src="/tahlil.svg" alt="tahlil" width={500} height={500} />
           {/* <figure className="">
             <img src="/tahlil.svg" alt="tahlil" className="" />
           </figure> */}
@@ -88,11 +79,14 @@ export default function MemoryDetailById({ response }) {
             turut beduka cita atas wafatnya
           </p>
           <p className="mt-5 font-bold text-3xl self-center md:self-start ">
-            {gender == "male" ? "Alm" : "Almh"}. {name ?? ""}
+            {gender.select.name == "male" ? "Alm" : "Almh"}.{" "}
+            <NotionTitle params={name} />
           </p>
-          <p className="self-center md:self-start">({name ?? ""})</p>
+          <p className="self-center md:self-start">
+            (<NotionTitle params={name} />)
+          </p>
           <p className="mt-10 md:mt-5 font-bold text-xl self-center md:self-start">
-            {gender == "male"
+            {gender.select.name == "male"
               ? "Allahummaghfirlahu warhamhu wa ‘afihi wa’fu anhu "
               : "Allahummaghfirlahaa warhamhaa wa’aafihaa wa’fu anhaa"}
           </p>
@@ -145,15 +139,23 @@ export default function MemoryDetailById({ response }) {
               />
             </div> */}
 
-            <div className="absolute -top-20 md:top-0 md:bottom-0 md:right-20 ">
+            <div className="absolute top-0 bottom-0 md:top-0 md:bottom-0 md:right-20 ">
               {/* <figure>
                 <img src="/bunda.png" className="drop-shadow-5xl w-screen" />
               </figure> */}
-              <div className=" flex flex-col  md:h-full md:w-full overflow-hidden justify-center">
-                <Image
+              <div className=" flex flex-col  md:h-full md:w-full overflow-hidden justify-center ">
+                {/* <Image
                   // src="/bunda.png"
                   src={image_url}
                   className="drop-shadow-5xl w-screen"
+                  width={500}
+                  height={500}
+                  alt="no image"
+                /> */}
+
+                <NotionImageCard
+                  image_url={image_url}
+                  className="drop-shadow-5xl md:w-screen w-1/2 md:h-2/3 h-1/2 object-cover rounded-full self-center"
                   width={500}
                   height={500}
                   alt="no image"
@@ -189,10 +191,32 @@ export async function getServerSideProps(context) {
   // const response = await fetch(`http://localhost:3000/api/passed-away/${id}`);
 
   // prod
-  const response = await fetch(`https://in-memorial-nextjs-tailwind.vercel.app/api/passed-away/${id}`);
+  // const response = await fetch(`https://in-memorial-nextjs-tailwind.vercel.app/api/passed-away/${id}`);
+
+  // const data = await response.json();
+  // console.log("data: ", data);
+
+  // api from notion
+  const page_id = id;
+  const url = `https://api.notion.com/v1/pages/${page_id}`;
+  const token = "Bearer secret_yupfQ86d4UVBuTAcOG099gAE6SI0gsAgXGNuxqXnbHa";
+  const notion_version = "2022-02-22";
+
+  // header
+  const headers = {
+    "Content-Type": "application/json",
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    Authorization: token,
+    "Notion-Version": notion_version,
+  };
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: headers,
+  });
 
   const data = await response.json();
-  // console.log("data: ", data);
+  console.log("data: ", data);
 
   return {
     props: {
