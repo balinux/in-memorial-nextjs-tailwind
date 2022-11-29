@@ -14,7 +14,8 @@ export default function NotionImageCard({image_url, className, width, height}) {
       // />
       <Image
       // src="/background-2.jpg"
-      src={image_url.url}
+      // src={image_url.url}
+      src={image_url.files[0].external.url}
       className={className}
       width={width}
       height={height}

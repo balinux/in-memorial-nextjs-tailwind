@@ -2,7 +2,6 @@ import NextAuth from 'next-auth'
 import GitHubProvider from "next-auth/providers/github";
 import Auth0Provider from "next-auth/providers/auth0";
 import KeycloakProvider from "next-auth/providers/keycloak";
-import Credentials from "next-auth/providers/credentials";
 
 
 const options = {

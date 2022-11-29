@@ -95,11 +95,10 @@ export default function MemoryDetailById({ response }) {
           <p className="mt-10 md:mt-5 self-center md:self-start text-lg">
             turut beduka cita atas wafatnya
           </p>
-          <p className="mt-5 font-bold text-3xl self-center md:self-start ">
-            {gender.select.name == "male" ? "Alm" : "Almh"}.{" "}
-            <NotionTitle params={name} textOnly={false} />
+          <p className="mt-5 font-bold text-3xl self-center md:self-start flex flex-row">
+            {gender.select.name == "male" ? "Alm" : "Almh"}. <NotionTitle params={name} textOnly={false} />
           </p>
-          <p className="self-center md:self-start">
+          <p className="self-center md:self-start flex flex-row">
             (<NotionTitle params={name} textOnly={false} />)
           </p>
           <p className="mt-10 md:mt-5 font-bold text-xl self-center md:self-start">
