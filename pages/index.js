@@ -84,7 +84,7 @@ export default function Home({ response }) {
           </div>
 
           <div className="flex flex-row md:w-1/2 w-full justify-center content-center md:order-2 order-1 ">
-            <Image src="/cta.png" width={400} height={100} alt="no image" />
+            <Image src="/cta.png" width={400} height={400} alt="no image" className=" md:w-2/3 h-auto" />
           </div>
         </section>
         {/* HERO */}
@@ -168,7 +168,7 @@ export default function Home({ response }) {
               }
 
               {/* looping data notion */}
-              {results.map((item) => (
+              {results.map((item, index) => (
                 <div
                   key={item.id}
                   className="my-2 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 "
@@ -190,7 +190,9 @@ export default function Home({ response }) {
                           href="#"
                         >
                           {/* {item.name} */}
-                          <NotionTitle params={item.properties.name} textOnly={false} />
+                          <NotionTitle
+                            key={item.id}
+                            params={item.properties.name} textOnly={false} />
                         </a>
                       </h1>
                       <p className=" text-gray-500 text-sm">
