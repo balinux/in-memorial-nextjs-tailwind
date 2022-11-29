@@ -3,7 +3,7 @@ import React, { useState, useRef, useCallback } from "react";
 import Dropzone, { useDropzone } from "react-dropzone";
 import axios from "axios";
 
-export const CreateMemoryAvatar = () => {
+export const CreateMemoryDrop = () => {
   const [imgSrc, setImgSrc] = useState()
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
@@ -24,7 +24,7 @@ export const CreateMemoryAvatar = () => {
   const acceptedFileItems = acceptedFiles.map(file => {
     if (file.length <= 0) return (<></>);
     return (
-      <div className="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 md:mb-3" role="alert">
+      <div key={file.path} className="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 md:mb-3" role="alert">
         <ul>
           <li key={file.path}>
             {file.path} - {file.size} bytes
@@ -37,7 +37,7 @@ export const CreateMemoryAvatar = () => {
     if (file.length <= 0) return (<></>);
 
     return (
-      <div className="bg-green-100 rounded-full mb-4 text-base text-green-700 md:mb-3 w-2/3 h-80 md:h-[40rem] md:w-[40rem]" role="alert">
+      <div key={file.path} className="bg-green-100 rounded-full mb-4 text-base text-green-700 md:mb-3 w-2/3 h-80 md:h-[40rem] md:w-[40rem]" role="alert">
         <Image
           // src={URL.createObjectURL(file)}
           src={URL.createObjectURL(imgSrc[0])}
@@ -58,7 +58,7 @@ export const CreateMemoryAvatar = () => {
     if (file.length <= 0 && errors == undefined) return (<></>);
 
     return (
-      <div className="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 md:mb-3" role="alert">
+      <div key={file.path} className="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 md:mb-3" role="alert">
         <ul>
           <li key={file.path}>
             {/* {file.path} - {file.size} bytes */}
@@ -165,7 +165,7 @@ export const CreateMemoryAvatar = () => {
           {
             isDragActive ?
               <p>Drop the files here ...</p> :
-              <p>Drag 'n' drop some files here, or click to select files</p>
+              <p>Drag `n` drop some files here, or click to select files</p>
           }
         </div>
         <aside>
@@ -227,4 +227,4 @@ export const CreateMemoryAvatar = () => {
   )
 }
 
-export default CreateMemoryAvatar;
+export default CreateMemoryDrop;
