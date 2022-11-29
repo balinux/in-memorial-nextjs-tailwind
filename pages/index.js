@@ -78,9 +78,11 @@ export default function Home({ response }) {
             <p className="mt-2 mb-10 text-center md:text-start">
               Jaga kenangan terbaik bersama orang tercintamu bersama kami
             </p>
-            <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start">
-              Buat Kenangan
-            </button>
+            <Link href={'/dashboard/create-memory'}>
+              <button className=" bg-[#587462] text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start">
+                Buat Kenangan
+              </button>
+            </Link>
           </div>
 
           <div className="flex flex-row md:w-1/2 w-full justify-center content-center md:order-2 order-1 ">
@@ -381,6 +383,12 @@ export async function getServerSideProps() {
             after: "2022-05-12",
           },
         },
+        {
+          "property": "status",
+          "select": {
+            "equals": "active"
+          }
+        }
       ],
     },
     page_size: 3,

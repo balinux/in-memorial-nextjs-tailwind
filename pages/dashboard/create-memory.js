@@ -2,8 +2,17 @@ import Image from "next/image";
 import React, { useState, useRef, useCallback } from "react";
 import Dropzone, { useDropzone } from "react-dropzone";
 import axios from "axios";
+import { getSession } from "next-auth/react";
+import Nav from "../../components/nav";
+import { useRouter } from 'next/router'
 
-export const CreateMemoryDrop = () => {
+export const CreateMemoryDrop = ({ session }) => {
+  // console.log(props);
+  const { email, image } = session.user
+
+  // set router
+  const router = useRouter()
+
   const [imgSrc, setImgSrc] = useState()
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
@@ -103,6 +112,7 @@ export const CreateMemoryDrop = () => {
     console.log("upload:", upload);
     const storeNotion = await storetoNotion(upload)
     console.log(storeNotion);
+    router.push("/");
   };
 
   // image uploader
@@ -110,7 +120,8 @@ export const CreateMemoryDrop = () => {
     const formData = new FormData()
     formData.append('file', imgSrc[0])
 
-    const urlUpload = `${process.env.BASE_URL}/api/telegraph`
+    const urlUpload = `${process.env.NEXT_PUBLIC_BASE_URL}/api/telegraph`
+    console.log(urlUpload);
     // const urlUpload = "https://httpbin.org/post"
     const response = await fetch(urlUpload, {
       method: "POST",
@@ -128,30 +139,30 @@ export const CreateMemoryDrop = () => {
       "gender": gender,
       "status": "pending",
       "name": name,
-      "author": "yhotie",
+      "author": email,
       "image_url": image_url.url,
       "date": date
     });
-    
+
     var config = {
       method: 'post',
-      url: `${process.env.BASE_URL}/api/notion`,
-      headers: { 
-        'Content-Type': 'application/json', 
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/notion`,
+      headers: {
+        'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      data : data
+      data: data
     };
-    
+
     axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-      return response.data
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        return response.data
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
 
   }
 
@@ -159,29 +170,34 @@ export const CreateMemoryDrop = () => {
 
   return (
     <main className="flex flex-col md:p-0 p-5">
+      {/* navigasi */}
+      <Nav />
+      {/* navigasi */}
       <section className="container self-center">
-        <div {...getRootProps()} className="bg-[#FBFBFB] h-36 flex flex-col items-center justify-center rounded-md text-gray-500 border-dashed border-2 border-indigo-600/30 mt-10 md:p-0 p-10">
-          <input {...getInputProps()}/>
-          {
-            isDragActive ?
-              <p>Drop the files here ...</p> :
-              <p>Drag `n` drop some files here, or click to select files</p>
-          }
-        </div>
-        <aside>
-          <div className="overflow-hidden md:mt-10 mt-5 flex flex-row justify-center">
-          {preview}
+        <div className="md:flex flex-row justify-between">
+          <div {...getRootProps()} className="bg-[#FBFBFB] md:h-[40rem] md:w-[40rem] h-36 flex flex-col items-center justify-center rounded-md text-gray-500 border-dashed border-2 border-indigo-600/30 mt-10 md:p-0 p-10">
+            <input {...getInputProps()} />
+            {
+              isDragActive ?
+                <p>Drop the files here ...</p> :
+                <p>Drag `n` drop some files here, or click to select files</p>
+            }
           </div>
-          {/* {acceptedFileItems} */}
-          {fileRejectionItems}
-        </aside>
+          <aside>
+            <div className="overflow-hidden md:mt-10 mt-5 flex flex-row justify-center">
+              {preview}
+            </div>
+            {/* {acceptedFileItems} */}
+            {fileRejectionItems}
+          </aside>
+        </div>
 
-        
+
         <form onSubmit={handleSubmit}>
           {/* form */}
-          <div className="w-full md:mr-5 mb-5 md:mb-0 mt-5">
+          <div className="w-full md:mr-5 mb-5 md:mb-10 mt-5">
             <label className="block">
-              <span className="text-gray-700">Nama</span>
+              <span className="text-gray-700">Nama <span className=" text-gray-500 text-xs">(Almarhum/Almarhumah)</span></span>
               <input
                 type="text"
                 onChange={handleName}
@@ -193,12 +209,13 @@ export const CreateMemoryDrop = () => {
           {/* form */}
 
           {/* jenis kelamin */}
-          <div className="w-full md:mr-5 mb-5 md:mb-0 mt-3">
+          <div className="w-full md:mr-5 mb-10 md:mb-10 mt-3">
             <label className="block">
 
-              <span className="text-gray-700">Jenis Kelamin?</span>
+              <span className="text-gray-700">Jenis Kelamin</span>
               <select className=" mt-1 w-full rounded-sm border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 onChange={handleGender}>
+                <option value="male">pilih jenis kelamin</option>
                 <option value="male">male</option>
                 <option value="female">female</option>
               </select>
@@ -220,7 +237,7 @@ export const CreateMemoryDrop = () => {
             </label>
           </div>
           {/* tanggal */}
-          <button  className=" bg-[#587462] mt-5 text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start" type="submit">Submit</button>
+          <button className=" bg-[#587462] mt-5 text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start" type="submit">Kirim</button>
         </form>
       </section>
     </main>
@@ -228,3 +245,20 @@ export const CreateMemoryDrop = () => {
 }
 
 export default CreateMemoryDrop;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: { session }
+  }
+}
