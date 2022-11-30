@@ -3,17 +3,30 @@ import React, { useState, useRef, useCallback } from "react";
 import Dropzone, { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { getSession } from "next-auth/react";
+// import { unstable_getServerSession } from "next-auth/next";
+// import { options } from '../api/auth/[...nextauth]'
 import Nav from "../../components/nav";
 import { useRouter } from 'next/router'
 
-export const CreateMemoryDrop = ({ session }) => {
+import { motion, AnimatePresence } from 'framer-motion'
+import Modal from "../../components/modal";
+
+export const CreateMemory = ({ session }) => {
   // console.log(props);
   const { email, image } = session.user
 
   // set router
   const router = useRouter()
 
+  // state
   const [imgSrc, setImgSrc] = useState()
+  const [modalOpen, setmodalOpen] = useState(false)
+
+  // modal setting
+  const close = () => setmodalOpen(false)
+  const open = () => setmodalOpen(true)
+
+
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
     console.log("acceptedFiles: ", acceptedFiles);
@@ -107,11 +120,14 @@ export const CreateMemoryDrop = ({ session }) => {
 
   // submit
   const handleSubmit = async (event) => {
+    open()
+
     event.preventDefault();
     const upload = await imageUploader(imgSrc[0])
     console.log("upload:", upload);
     const storeNotion = await storetoNotion(upload)
     console.log(storeNotion);
+    close()
     router.push("/");
   };
 
@@ -191,6 +207,7 @@ export const CreateMemoryDrop = ({ session }) => {
             {fileRejectionItems}
           </aside>
         </div>
+        {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
 
 
         <form onSubmit={handleSubmit}>
@@ -237,17 +254,47 @@ export const CreateMemoryDrop = ({ session }) => {
             </label>
           </div>
           {/* tanggal */}
-          <button className=" bg-[#587462] mt-5 text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start" type="submit">Kirim</button>
+
+          {/* submit button */}
+          {modalOpen ? <motion.button
+            onClick={() => null}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className=" bg-gray-500 mt-5 text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start"
+            type="submit">Mengirim...</motion.button> : <motion.button
+              onClick={() => (modalOpen ? close() : open())}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className=" bg-[#587462] mt-5 text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start"
+              type="submit">Kirim</motion.button>}
+          {/* submit button */}
+
+
         </form>
+        <AnimatePresence
+          // Disable any initial animations on children that
+          // are present when the component is first rendered
+          initial={false}
+          // Only render one component at a time.
+          // The exiting component will finish its exit
+          // animation before entering component is rendered
+          exitBeforeEnter={true}
+          // Fires when all exiting nodes have completed animating out
+          onExitComplete={() => null}
+        >
+          {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+        </AnimatePresence>
+        {/* {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />} */}
       </section>
     </main>
   )
 }
 
-export default CreateMemoryDrop;
+export default CreateMemory;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+  // const session = await unstable_getServerSession(context.req, context.res, options)
 
   if (!session) {
     return {
