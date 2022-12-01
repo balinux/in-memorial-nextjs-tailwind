@@ -114,7 +114,7 @@ export const CreateMemory = ({ session }) => {
   }
   // form handle
   const handleName = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setname(event.target.value)
   }
 
@@ -124,9 +124,9 @@ export const CreateMemory = ({ session }) => {
 
     event.preventDefault();
     const upload = await imageUploader(imgSrc[0])
-    console.log("upload:", upload);
+    // console.log("upload telegraph:", upload);
     const storeNotion = await storetoNotion(upload)
-    console.log(storeNotion);
+    // console.log(storeNotion);
     close()
     router.push("/");
   };
@@ -195,8 +195,10 @@ export const CreateMemory = ({ session }) => {
             <input {...getInputProps()} />
             {
               isDragActive ?
-                <p>Drop the files here ...</p> :
-                <p>Drag `n` drop some files here, or click to select files</p>
+                <p>Letakkan file di sini ...</p> :
+                <p>Seret dan letakkan beberapa foto di sini, atau klik untuk memilih file</p>
+                // <p>Drop the files here ...</p> :
+                // <p>Drag `n` drop some files here, or click to select files</p>
             }
           </div>
           <aside>
@@ -271,7 +273,17 @@ export const CreateMemory = ({ session }) => {
 
 
         </form>
-        <AnimatePresence
+{/* 
+        <motion.button
+              onClick={() => (modalOpen ? close() : open())}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className=" bg-[#587462] mt-5 text-white rounded-md w-32 p-0 px-2 py-2 text-sm font-bold md:mb-10 self-center md:self-start"
+              type="submit">Kirim</motion.button> */}
+        
+        {/* {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />} */}
+      </section>
+      <AnimatePresence
           // Disable any initial animations on children that
           // are present when the component is first rendered
           initial={false}
@@ -284,8 +296,6 @@ export const CreateMemory = ({ session }) => {
         >
           {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
         </AnimatePresence>
-        {/* {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />} */}
-      </section>
     </main>
   )
 }
