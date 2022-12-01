@@ -55,7 +55,7 @@ export default async function handler(req, res) {
                         "type": "external",
                         "name": "Space Wallpaper",
                         "external": {
-                            "url": image_url
+                            "url": image_url ?? "https://in-memorial.yhotie.com/_next/image?url=%2Fcta.png&w=640&q=75"
                         }
                     }
                 ]
